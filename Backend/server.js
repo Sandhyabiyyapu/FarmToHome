@@ -6,10 +6,12 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+const authRoutes = require('./Routes/authRoutes');
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use('/api/auth', authRoutes);
 
 // MongoDB Atlas Connection
 mongoose.connect(process.env.MONGO_URI, {
