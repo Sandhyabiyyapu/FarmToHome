@@ -26,12 +26,6 @@ app.get('/', (req, res) => {
   res.send("🌿 FarmToHome API is working!");
 });
 
-// Import & Use Routes
-const authRoutes = require('./Routes/authRoutes');
-// Add more routes like farmerRoutes, adminRoutes, etc. as you build
-app.use('/api/auth', authRoutes);
-
-// Server Listener
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
