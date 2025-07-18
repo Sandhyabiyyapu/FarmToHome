@@ -7,7 +7,12 @@ const farmerSchema = new mongoose.Schema({
   phone: String,
   location: String,
 
+<<<<<<< HEAD
   farmImages: [String],
+=======
+  // Store uploaded image URLs (handled automatically on backend)
+  farmImages: [String], // You will push image URLs here after upload
+>>>>>>> origin/farmer-branch
 
   isApproved: { type: Boolean, default: false },
   role: { type: String, default: 'farmer' },
