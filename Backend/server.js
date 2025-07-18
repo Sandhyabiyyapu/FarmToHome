@@ -1,5 +1,4 @@
 // backend/server.js
-// backend/server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -12,6 +11,7 @@ const authRoutes = require('./Routes/authRoutes');
 app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
+app.use('/uploads', express.static('uploads'));
 
 // MongoDB Atlas Connection
 mongoose.connect(process.env.MONGO_URI, {

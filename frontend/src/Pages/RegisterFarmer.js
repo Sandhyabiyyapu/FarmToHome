@@ -34,7 +34,7 @@ function RegisterFarmer() {
       data.append('farmImages', file);
     });
     try {
-      await axios.post('http://localhost:5000/api/farmer/register', data, {
+      await axios.post('http://localhost:5000/api/auth/register-farmer', data, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       alert('Registration successful! Await admin approval.');
