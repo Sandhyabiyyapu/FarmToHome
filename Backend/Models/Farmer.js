@@ -6,10 +6,9 @@ const farmerSchema = new mongoose.Schema({
   password: String,
   phone: String,
   location: String,
-  certification: {
-    docUrl: String,
-    status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending' }
-  },
+
+  farmImages: [String],
+
   isApproved: { type: Boolean, default: false },
   role: { type: String, default: 'farmer' },
   createdAt: { type: Date, default: Date.now }
