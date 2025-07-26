@@ -74,7 +74,7 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials or not authorized" });
     }
     // Generate JWT token
-    const token = jwt.sign({ userId: user._id, role: user.role }, "your_jwt_secret", { expiresIn: "1d" });
+    const token = jwt.sign({ id: user._id, role: user.role }, "your_jwt_secret", { expiresIn: "1d" });
     res.json({ token, role: user.role });
   } catch (err) {
     console.error("Login Error:", err);

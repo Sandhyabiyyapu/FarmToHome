@@ -6,11 +6,13 @@ require('dotenv').config();
 
 const app = express();
 const authRoutes = require('./Routes/authRoutes');
+const farmerRoutes = require('./Routes/farmerRoutes');
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
+app.use('/api/farmer', farmerRoutes);
 app.use('/uploads', express.static('uploads'));
 
 // MongoDB Atlas Connection
