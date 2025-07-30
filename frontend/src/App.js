@@ -3,6 +3,7 @@ import './App.css';
 import RegisterCustomer from './Pages/RegisterCustomer';
 import RegisterFarmer from './Pages/RegisterFarmer';
 import Login from './Pages/Login';
+import AdminLogin from './Pages/AdminLogin';
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         {/* Auth Pages */}
         <Route path="/register-customer" element={<RegisterCustomer />} />
         <Route path="/register-farmer" element={<RegisterFarmer />} />
-
+        <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/login" element={<Login />} />
         {/* <Route path="/login" element={<Login />} /> */}
 

@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
   res.send("🌿 FarmToHome API is working!");
 });
 
+
 // Add this after app initialization and before app.listen
 // const authRoutes = require('./Routes/authRoutes');
 app.use('/api/auth', authRoutes);
