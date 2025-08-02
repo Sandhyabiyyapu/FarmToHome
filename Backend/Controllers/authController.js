@@ -74,6 +74,14 @@ exports.login = async (req, res) => {
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid credentials or not authorized" });
     }
+    
+    // Check if farmer is approved
+    if (role === 'farmer' && !user.isApproved) {
+      return res.status(403).json({ 
+        message: "Your account is pending approval. Please wait for admin approval." 
+      });
+    }
+    
     // Generate JWT token
     const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
     const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET, { expiresIn: "1d" });

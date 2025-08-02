@@ -10,6 +10,7 @@ import EditProduct from './Pages/farmer/EditProduct';
 import ViewOrders from './Pages/farmer/ViewOrders';
 import Earnings from './Pages/farmer/Earnings';
 import AdminLogin from './Pages/AdminLogin';
+import AdminDashboard from './Pages/AdminDashboard';
 
 function App() {
   return (
@@ -33,7 +34,13 @@ function App() {
         {/* Customer Dashboard */}
         {/* <Route path="/customer/home" element={<CustomerHome />} /> */}
 
-        {/* Admin, Delivery - You'll add these later */}
+        {/* Admin Dashboard */}
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
+        {/* Customer Dashboard */}
+        {/* <Route path="/customer/home" element={<CustomerHome />} /> */}
+
+        {/* Delivery - You'll add these later */}
       </Routes>
     </BrowserRouter>
   );

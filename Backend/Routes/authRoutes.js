@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const { registerCustomer, registerFarmer, login } = require('../Controllers/authController');
+const { registerCustomer, registerFarmer, login, adminLogin } = require('../Controllers/authController');
 
 // Multer setup for file uploads
 const storage = multer.diskStorage({
@@ -18,4 +18,5 @@ const upload = multer({ storage: storage });
 router.post('/register-customer', registerCustomer);
 router.post('/register-farmer', upload.array('farmImages'), registerFarmer);
 router.post('/login', login);
+router.post('/admin-login', adminLogin);
 module.exports = router;

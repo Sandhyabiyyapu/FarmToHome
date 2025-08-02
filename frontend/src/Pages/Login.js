@@ -33,7 +33,11 @@ function Login() {
       if (role === 'customer') navigate('/customer/home');
       else if (role === 'farmer') navigate('/farmer/dashboard');
     } catch (err) {
-      alert("Invalid credentials or not authorized");
+      if (err.response && err.response.status === 403) {
+        alert(err.response.data.message);
+      } else {
+        alert("Invalid credentials or not authorized");
+      }
     }
   };
 
