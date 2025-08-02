@@ -1,5 +1,4 @@
-// // backend/server.js
-// // backend/server.js
+// // // backend/server.js
 // const express = require('express');
 // const mongoose = require('mongoose');
 // const cors = require('cors');
@@ -43,14 +42,17 @@ require('dotenv').config();
 
 // Initialize app
 const app = express();
+const authRoutes = require('./Routes/authRoutes');
+const farmerRoutes = require('./Routes/farmerRoutes');
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
 // Routes
-const authRoutes = require('./Routes/authRoutes');
 app.use('/api/auth', authRoutes);
+app.use('/api/farmer', farmerRoutes);
+app.use('/uploads', express.static('uploads'));
 
 // MongoDB Atlas Connection
 mongoose.connect(process.env.MONGO_URI, {

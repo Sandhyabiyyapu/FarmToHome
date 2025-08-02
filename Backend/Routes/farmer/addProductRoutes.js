@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const { registerCustomer, registerFarmer, login } = require('../Controllers/authController');
+const auth = require('../../Middleware/auth');
+const AddProductController = require('../../Controllers/Farmer/AddProductController');
 
-// Multer setup for file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../uploads'));
+    cb(null, path.join(__dirname, '../../uploads'));
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + '-' + file.originalname);
@@ -15,7 +15,6 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-router.post('/register-customer', registerCustomer);
-router.post('/register-farmer', upload.array('farmImages'), registerFarmer);
-router.post('/login', login);
-module.exports = router;
+router.post('/products', auth, upload.single('image'), AddProductController.addProduct);
+
+module.exports = router; 
