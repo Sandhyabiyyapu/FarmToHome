@@ -6,6 +6,7 @@ import Login from './Pages/Login';
 import DashboardOverview from './Pages/farmer/DashboardOverview';
 import AddProduct from './Pages/farmer/AddProduct';
 import ManageProducts from './Pages/farmer/ManageProducts';
+import EditProduct from './Pages/farmer/EditProduct';
 import ViewOrders from './Pages/farmer/ViewOrders';
 import Earnings from './Pages/farmer/Earnings';
 import AdminLogin from './Pages/AdminLogin';
@@ -25,6 +26,7 @@ function App() {
         <Route path="/farmer/dashboard" element={<DashboardOverview />} />
         <Route path="/farmer/add-product" element={<AddProduct />} />
         <Route path="/farmer/manage-products" element={<ManageProducts />} />
+        <Route path="/farmer/edit-product/:productId" element={<EditProduct />} />
         <Route path="/farmer/view-orders" element={<ViewOrders />} />
         <Route path="/farmer/earnings" element={<Earnings />} />
 

@@ -63,9 +63,9 @@ exports.login = async (req, res) => {
     const { email, password, role } = req.body;
     let user;
     if (role === 'customer') {
-      user = await User.findOne({ email, role });
+      user = await User.findOne({ email });
     } else if (role === 'farmer') {
-      user = await Farmer.findOne({ email, role });
+      user = await Farmer.findOne({ email });
     }
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials or not authorized" });
@@ -75,7 +75,8 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials or not authorized" });
     }
     // Generate JWT token
-    const token = jwt.sign({ id: user._id, role: user.role }, "your_jwt_secret", { expiresIn: "1d" });
+    const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
+    const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET, { expiresIn: "1d" });
     res.json({ token, role: user.role });
   } catch (err) {
     console.error("Login Error:", err);

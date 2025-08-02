@@ -9,6 +9,38 @@ exports.getProducts = async (req, res) => {
   }
 };
 
+exports.getProduct = async (req, res) => {
+  try {
+    const product = await Product.findOne({ _id: req.params.id, farmerId: req.user.id });
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.updateProduct = async (req, res) => {
+  try {
+    const { quantity, availableUntil } = req.body;
+    const product = await Product.findOne({ _id: req.params.id, farmerId: req.user.id });
+    
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    // Only allow updating quantity and availableUntil
+    product.quantity = parseInt(quantity);
+    product.availableUntil = new Date(availableUntil);
+    
+    await product.save();
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
 exports.deleteProduct = async (req, res) => {
   try {
     const product = await Product.findOne({ _id: req.params.id, farmerId: req.user.id });
