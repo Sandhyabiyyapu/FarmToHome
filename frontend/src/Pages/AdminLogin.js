@@ -15,7 +15,7 @@ function AdminLogin() {
     try {
       const res = await axios.post('http://localhost:5000/api/auth/admin-login', form);
       alert(res.data.message);
-      // You can store token if needed: localStorage.setItem('token', res.data.token)
+      localStorage.setItem('adminToken', res.data.token);
       navigate('/admin/dashboard');
     } catch (err) {
       alert("Login failed. Check email/password.");
